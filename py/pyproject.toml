@@ -1,0 +1,130 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool.poetry]
+authors = ["kagemeka <kagemeka1@gmail.com>"]
+description = "Competitive Programming Tools"
+keywords = ["cp"]
+license = "MIT"
+name = "cptol"
+packages = [
+  {include = "cptol"},
+]
+readme = "../README.md"
+repository = "https://github.com/kagemeka/cptol"
+version = "0.0.1"
+
+[tool.poetry.dependencies]
+PyYAML = "^"
+aiodns = "^"
+aiohttp = "^"
+beautifulsoup4 = "^"
+# cchardet = "^"
+lxml = "^"
+pandas = "^"
+python = ">=3.10,<3.11"
+requests = "^"
+selenium = "^"
+tqdm = "^"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^"
+bandit = "^"
+black = "^"
+blacken-docs = "^"
+flake8 = "^"
+isort = "^"
+mypy = "^"
+pre-commit = "^"
+pydocstyle = "^"
+pylint = "^"
+pyproject-flake8 = "^"
+pytest = "^"
+pytest-asyncio = "^"
+types-PyYAML = "^"
+types-requests = "^"
+types-setuptools = "^"
+
+[tool.black]
+line-length = 79
+target-version = ["py310"]
+verbose = true
+
+[tool.autopep8]
+aggressive = 3 
+ignore = "E501,W6" # or ["E501", "W6"]
+in-place = true 
+max_line_length = 79 
+recursive = true 
+
+[tool.isort]
+profile = "black"
+
+[tool.flake8]
+count = 'true'
+exclude = ["docs/", "scripts/"]
+exit_zero = 'true'
+ignore = 'E203'
+max_complexity = 8
+max_line_length = 79
+show_source = 'true'
+statistics = 'true'
+verbose = 'true'
+
+[tool.mypy]
+allow_redefinition = false
+allow_untyped_globals = false
+cache_dir = ".mypy_cache"
+cache_fine_grained = false
+check_untyped_defs = true
+color_output = true
+disallow_any_decorated = true
+disallow_any_explicit = true
+disallow_any_expr = false
+disallow_any_generics = true
+disallow_any_unimported = false
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_calls = false
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+error_summary = true
+exclude = ["docs/"]
+follow_imports = 'normal'
+ignore_errors = false
+ignore_missing_imports = true
+implicit_reexport = false
+incremental = true
+local_partial_types = true
+no_implicit_optional = true
+no_implicit_reexport = true
+no_strict_optional = false
+pdb = true
+pretty = true
+python_version = "3.10"
+raise_exceptions = true
+scripts_are_modules = true
+show_absolute_path = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+show_none_errors = true
+show_traceback = true
+skip_cache_mtime_checks = false
+skip_version_check = false
+sqlite_cache = false
+strict = true
+strict_equality = true
+strict_optional = true
+verbosity = 0
+warn_incomplete_stub = true
+warn_no_return = true
+warn_redundant_casts = true
+warn_return_any = false
+warn_unreachable = true
+warn_unused_configs = false
+warn_unused_ignores = true
+
+[tool.pytest.ini_options]
+cache_dir = "/tmp/.pytest_cache"

@@ -1,0 +1,35 @@
+name: pypi
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        pip3 install .
+        pip3 install setuptools wheel
+
+    # see https://github.com/online-judge-tools/oj/issues/755<Paste>
+    - name: Workaround for the conflict of the module name
+      run: bash workaround_for_conflict.sh
+
+    - name: Build package
+      run: python3 setup.py bdist_wheel
+
+    - name: Publish package
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: __token__
+        password: ${{ secrets.pypi_password }}
